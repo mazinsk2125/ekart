@@ -1,0 +1,9 @@
+C:\Users\Mazin Shamshad\Downloads\ekart\product-service\src\main\java\com\ekart\product\controller\ProductController.java
+C:\Users\Mazin Shamshad\Downloads\ekart\product-service\src\main\java\com\ekart\product\dto\ProductDto.java
+C:\Users\Mazin Shamshad\Downloads\ekart\product-service\src\main\java\com\ekart\product\dto\StockUpdateRequest.java
+C:\Users\Mazin Shamshad\Downloads\ekart\product-service\src\main\java\com\ekart\product\entity\Product.java
+C:\Users\Mazin Shamshad\Downloads\ekart\product-service\src\main\java\com\ekart\product\exception\EkartException.java
+C:\Users\Mazin Shamshad\Downloads\ekart\product-service\src\main\java\com\ekart\product\exception\GlobalExceptionHandler.java
+C:\Users\Mazin Shamshad\Downloads\ekart\product-service\src\main\java\com\ekart\product\ProductServiceApplication.java
+C:\Users\Mazin Shamshad\Downloads\ekart\product-service\src\main\java\com\ekart\product\repository\ProductRepository.java
+C:\Users\Mazin Shamshad\Downloads\ekart\product-service\src\main\java\com\ekart\product\service\ProductService.java

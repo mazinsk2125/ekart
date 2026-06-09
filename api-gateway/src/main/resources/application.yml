@@ -1,0 +1,77 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # Disabled in favour of explicit routes below for predictable paths.
+          enabled: false
+      # Global CORS so the React frontend (http://localhost:5173) can call the gateway.
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:5173"
+              - "http://localhost:4173"
+              - "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+              - PATCH
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 3600
+      routes:
+        # ---- Customer Service (auth + profile) ----
+        - id: customer-service
+          uri: lb://customer-service
+          predicates:
+            - Path=/customer-api/**
+
+        # ---- Product Service ----
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/product-api/**
+
+        # ---- Cart Service ----
+        - id: cart-service
+          uri: lb://cart-service
+          predicates:
+            - Path=/cart-api/**
+
+        # ---- Order Service ----
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order-api/**
+
+        # ---- Payment Service ----
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - Path=/payment-api/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO

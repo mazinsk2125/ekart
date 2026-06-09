@@ -1,0 +1,34 @@
+# =====================================================================
+# customer-service — example configuration
+# Copy to application.yml and fill in real values.
+# =====================================================================
+server:
+  port: 8081                                   # Unique port for this service
+
+spring:
+  application:
+    name: customer-service
+  datasource:
+    url: jdbc:mysql://<DB_HOST>:3306/ekart_customer?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: <DB_USERNAME>                     # e.g. root
+    password: <DB_PASSWORD>                     # e.g. root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update                          # use 'validate' once schema is created from SQL
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+ekart:
+  jwt:
+    secret: <JWT_SECRET_AT_LEAST_32_CHARS>      # HMAC-SHA signing secret
+    expiration-ms: 86400000                     # token lifetime in ms (24h)
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://<EUREKA_HOST>:8761/eureka/
+  instance:
+    prefer-ip-address: true

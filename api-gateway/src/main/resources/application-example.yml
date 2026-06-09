@@ -1,0 +1,41 @@
+# =====================================================================
+# api-gateway — example configuration
+# Copy to application.yml and adjust for your environment.
+# =====================================================================
+server:
+  port: 8080                       # Public port the React app talks to
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:5173"   # Frontend dev origin (Vite)
+            allowedMethods: [GET, POST, PUT, DELETE, OPTIONS, PATCH]
+            allowedHeaders: "*"
+            allowCredentials: true
+      routes:
+        - id: customer-service
+          uri: lb://customer-service
+          predicates: [ "Path=/customer-api/**" ]
+        - id: product-service
+          uri: lb://product-service
+          predicates: [ "Path=/product-api/**" ]
+        - id: cart-service
+          uri: lb://cart-service
+          predicates: [ "Path=/cart-api/**" ]
+        - id: order-service
+          uri: lb://order-service
+          predicates: [ "Path=/order-api/**" ]
+        - id: payment-service
+          uri: lb://payment-service
+          predicates: [ "Path=/payment-api/**" ]
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/   # Eureka registry URL

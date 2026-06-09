@@ -1,0 +1,397 @@
+/* =====================================================================
+   EKart — global design system (custom CSS3 layered on Bootstrap 5)
+   ===================================================================== */
+
+:root {
+  --ek-primary: #4f46e5;
+  --ek-primary-dark: #4338ca;
+  --ek-primary-light: #eef2ff;
+  --ek-accent: #06b6d4;
+  --ek-ink: #1e293b;
+  --ek-muted: #64748b;
+  --ek-bg: #f7f8fc;
+  --ek-surface: #ffffff;
+  --ek-border: #e6e8f0;
+  --ek-success: #16a34a;
+  --ek-radius: 14px;
+  --ek-radius-sm: 10px;
+  --ek-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.08);
+  --ek-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --ek-shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.12);
+  --ek-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--ek-font);
+  background-color: var(--ek-bg);
+  color: var(--ek-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* Typography ---------------------------------------------------------- */
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ek-ink);
+}
+
+.text-muted-2 {
+  color: var(--ek-muted) !important;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.section-subtitle {
+  color: var(--ek-muted);
+  margin-bottom: 1.75rem;
+}
+
+/* Buttons ------------------------------------------------------------- */
+.btn-brand {
+  background-color: var(--ek-primary);
+  border-color: var(--ek-primary);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--ek-radius-sm);
+  transition: background-color 0.15s ease, transform 0.05s ease, box-shadow 0.15s ease;
+}
+
+.btn-brand:hover,
+.btn-brand:focus {
+  background-color: var(--ek-primary-dark);
+  border-color: var(--ek-primary-dark);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+}
+
+.btn-brand:active {
+  transform: translateY(1px);
+}
+
+.btn-brand:disabled {
+  background-color: #a5b4fc;
+  border-color: #a5b4fc;
+}
+
+.btn-outline-brand {
+  border-color: var(--ek-primary);
+  color: var(--ek-primary);
+  font-weight: 600;
+  border-radius: var(--ek-radius-sm);
+}
+
+.btn-outline-brand:hover {
+  background-color: var(--ek-primary);
+  color: #fff;
+}
+
+/* Navbar -------------------------------------------------------------- */
+.ekart-navbar {
+  background: var(--ek-surface);
+  border-bottom: 1px solid var(--ek-border);
+  box-shadow: var(--ek-shadow-sm);
+}
+
+.ekart-brand {
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--ek-primary) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ekart-brand .logo-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--ek-primary), var(--ek-accent));
+  display: inline-grid;
+  place-items: center;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.ekart-navbar .nav-link {
+  color: var(--ek-ink);
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem !important;
+}
+
+.ekart-navbar .nav-link:hover {
+  background: var(--ek-primary-light);
+  color: var(--ek-primary);
+}
+
+.ekart-navbar .nav-link.active {
+  color: var(--ek-primary);
+  font-weight: 600;
+}
+
+.cart-badge {
+  font-size: 0.65rem;
+  transform: translate(-6px, -8px);
+}
+
+/* Cards --------------------------------------------------------------- */
+.ekart-card {
+  background: var(--ek-surface);
+  border: 1px solid var(--ek-border);
+  border-radius: var(--ek-radius);
+  box-shadow: var(--ek-shadow-sm);
+}
+
+.product-card {
+  border: 1px solid var(--ek-border);
+  border-radius: var(--ek-radius);
+  overflow: hidden;
+  background: var(--ek-surface);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  height: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ek-shadow-md);
+}
+
+.product-thumb {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+  background: #eef1f6;
+}
+
+.product-card .brand-chip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ek-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.price-tag {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--ek-ink);
+}
+
+/* Auth pages ---------------------------------------------------------- */
+.auth-wrapper {
+  min-height: calc(100vh - 64px);
+  display: grid;
+  place-items: center;
+  padding: 2.5rem 1rem;
+  background:
+    radial-gradient(1100px 500px at 90% -10%, rgba(6, 182, 212, 0.12), transparent),
+    radial-gradient(900px 500px at 0% 110%, rgba(79, 70, 229, 0.14), transparent);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--ek-surface);
+  border-radius: 18px;
+  box-shadow: var(--ek-shadow-lg);
+  padding: 2.25rem;
+  border: 1px solid var(--ek-border);
+}
+
+/* Hero ---------------------------------------------------------------- */
+.hero {
+  border-radius: 22px;
+  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+  color: #fff;
+  padding: 3rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  color: #fff;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.hero p {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 540px;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.35;
+  background: #fff;
+}
+
+/* Forms --------------------------------------------------------------- */
+.form-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ek-ink);
+}
+
+.form-control,
+.form-select {
+  border-radius: var(--ek-radius-sm);
+  border-color: var(--ek-border);
+  padding: 0.6rem 0.85rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--ek-primary);
+  box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.15);
+}
+
+/* Search suggestions -------------------------------------------------- */
+.search-wrap {
+  position: relative;
+  max-width: 560px;
+}
+
+.suggestions {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--ek-surface);
+  border: 1px solid var(--ek-border);
+  border-radius: var(--ek-radius-sm);
+  box-shadow: var(--ek-shadow-md);
+  overflow: hidden;
+}
+
+.suggestions button {
+  display: flex;
+  width: 100%;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.55rem 0.85rem;
+  border: none;
+  background: transparent;
+  text-align: left;
+}
+
+.suggestions button:hover {
+  background: var(--ek-primary-light);
+}
+
+.suggestions img {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Quantity stepper ---------------------------------------------------- */
+.qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--ek-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.qty-stepper button {
+  border: none;
+  background: var(--ek-surface);
+  width: 34px;
+  height: 34px;
+  font-weight: 700;
+  color: var(--ek-primary);
+}
+
+.qty-stepper button:disabled {
+  color: #cbd5e1;
+}
+
+.qty-stepper span {
+  min-width: 40px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Footer -------------------------------------------------------------- */
+.ekart-footer {
+  background: var(--ek-surface);
+  border-top: 1px solid var(--ek-border);
+  color: var(--ek-muted);
+}
+
+/* Misc ---------------------------------------------------------------- */
+.empty-state {
+  text-align: center;
+  padding: 3.5rem 1rem;
+  color: var(--ek-muted);
+}
+
+.empty-state .icon {
+  font-size: 3rem;
+  opacity: 0.4;
+}
+
+.ekart-toast {
+  box-shadow: var(--ek-shadow-md);
+  border-radius: var(--ek-radius-sm);
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #eef1f6 25%, #e2e8f0 37%, #eef1f6 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.3s ease infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+.selectable-card {
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.selectable-card.selected {
+  border-color: var(--ek-primary);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
+}
+
+.step-pill {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  background: var(--ek-primary-light);
+  color: var(--ek-primary);
+}
