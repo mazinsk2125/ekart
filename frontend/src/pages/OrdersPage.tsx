@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { orderApi } from '@/api/orderApi';
-import { useAuth } from '@/hooks/useAuth';
-import Loader from '@/components/Loader';
-import EmptyState from '@/components/EmptyState';
-import { formatPrice } from '@/components/ProductCard';
-import type { Order } from '@/types';
+import { orderApi } from '../api/orderApi';
+import { useAuth } from '../hooks/useAuth';
+import Loader from '../components/Loader';
+import EmptyState from '../components/EmptyState';
+import { formatPrice } from '../components/ProductCard';
+import type { Order } from '../types';
 
 function formatDate(value: string): string {
   const d = new Date(value);

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { productApi } from '@/api/productApi';
-import { useAuth } from '@/hooks/useAuth';
-import ProductCard from '@/components/ProductCard';
-import Loader from '@/components/Loader';
-import type { Product } from '@/types';
+import { productApi } from '../api/productApi';
+import { useAuth } from '../hooks/useAuth';
+import ProductCard from '../components/ProductCard';
+import Loader from '../components/Loader';
+import type { Product } from '../types';
 
 export default function HomePage() {
   const { user } = useAuth();

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { authApi } from '@/api/authApi';
-import { useAuth } from '@/hooks/useAuth';
-import Loader from '@/components/Loader';
-import type { Customer } from '@/types';
+import { authApi } from '../api/authApi';
+import { useAuth } from '../hooks/useAuth';
+import Loader from '../components/Loader';
+import type { Customer } from '../types';
 
 export default function ProfilePage() {
   const { user, setUser } = useAuth();

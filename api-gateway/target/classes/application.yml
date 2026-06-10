@@ -5,18 +5,26 @@ spring:
   application:
     name: api-gateway
   cloud:
+    # ---- Consul service registry & discovery ----
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        register: true
+        prefer-ip-address: true
+        service-name: ${spring.application.name}
+        health-check-path: /actuator/health
+        health-check-interval: 10s
     gateway:
       discovery:
         locator:
           # Disabled in favour of explicit routes below for predictable paths.
           enabled: false
-      # Global CORS so the React frontend (http://localhost:5173) can call the gateway.
+      # Global CORS so the React frontend (CRA on http://localhost:3000) can call the gateway.
       globalcors:
         cors-configurations:
           '[/**]':
             allowedOrigins:
-              - "http://localhost:5173"
-              - "http://localhost:4173"
               - "http://localhost:3000"
             allowedMethods:
               - GET
@@ -58,13 +66,6 @@ spring:
           uri: lb://payment-service
           predicates:
             - Path=/payment-api/**
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
 
 management:
   endpoints:

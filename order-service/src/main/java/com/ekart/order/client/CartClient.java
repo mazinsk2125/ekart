@@ -1,19 +1,39 @@
 package com.ekart.order.client;
 
 import com.ekart.order.dto.CartProductDto;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
-import java.util.List;
+/**
+ * Reactive, load-balanced client to Cart Service (WebClient + Flux/Mono).
+ * Target instances are resolved through Consul via the {@code lb://} scheme.
+ */
+@Component
+public class CartClient {
 
-@FeignClient(name = "cart-service")
-public interface CartClient {
+    private static final String CART_SERVICE_URI = "lb://cart-service";
 
-    @GetMapping("/cart-api/customer/{customerEmailId}/products")
-    List<CartProductDto> getCartProducts(@PathVariable("customerEmailId") String customerEmailId);
+    private final WebClient webClient;
 
-    @DeleteMapping("/cart-api/customer/{customerEmailId}/clear")
-    void clearCart(@PathVariable("customerEmailId") String customerEmailId);
+    public CartClient(WebClient.Builder loadBalancedWebClientBuilder) {
+        this.webClient = loadBalancedWebClientBuilder.baseUrl(CART_SERVICE_URI).build();
+    }
+
+    /** Streams the customer's cart line items. */
+    public Flux<CartProductDto> getCartProducts(String customerEmailId) {
+        return webClient.get()
+            .uri("/cart-api/customer/{customerEmailId}/products", customerEmailId)
+            .retrieve()
+            .bodyToFlux(CartProductDto.class);
+    }
+
+    /** Clears the customer's cart after a successful order. */
+    public Mono<Void> clearCart(String customerEmailId) {
+        return webClient.delete()
+            .uri("/cart-api/customer/{customerEmailId}/clear", customerEmailId)
+            .retrieve()
+            .bodyToMono(Void.class);
+    }
 }

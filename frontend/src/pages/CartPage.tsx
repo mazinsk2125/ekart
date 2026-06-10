@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { cartApi } from '@/api/cartApi';
-import { useAuth } from '@/hooks/useAuth';
-import { useCart } from '@/hooks/useCart';
-import { useToast } from '@/context/ToastContext';
-import Loader from '@/components/Loader';
-import EmptyState from '@/components/EmptyState';
-import { formatPrice } from '@/components/ProductCard';
-import type { CartProduct } from '@/types';
+import { cartApi } from '../api/cartApi';
+import { useAuth } from '../hooks/useAuth';
+import { useCart } from '../hooks/useCart';
+import { useToast } from '../context/ToastContext';
+import Loader from '../components/Loader';
+import EmptyState from '../components/EmptyState';
+import { formatPrice } from '../components/ProductCard';
+import type { CartProduct } from '../types';
 
 export default function CartPage() {
   const { user } = useAuth();

@@ -1,5 +1,5 @@
 import apiClient from './client';
-import type { AddCardRequest, Card, MakePaymentRequest } from '@/types';
+import type { AddCardRequest, Card, MakePaymentRequest } from '../types';
 
 export const paymentApi = {
   addCard(customerEmailId: string, payload: AddCardRequest): Promise<string> {

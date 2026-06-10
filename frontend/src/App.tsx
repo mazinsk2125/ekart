@@ -1,18 +1,18 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import ProtectedRoute from '@/components/ProtectedRoute';
-import LoginPage from '@/pages/LoginPage';
-import RegisterPage from '@/pages/RegisterPage';
-import HomePage from '@/pages/HomePage';
-import ProductsPage from '@/pages/ProductsPage';
-import ProductDetailsPage from '@/pages/ProductDetailsPage';
-import CartPage from '@/pages/CartPage';
-import PlaceOrderPage from '@/pages/PlaceOrderPage';
-import OrdersPage from '@/pages/OrdersPage';
-import CardsPage from '@/pages/CardsPage';
-import ProfilePage from '@/pages/ProfilePage';
-import NotFoundPage from '@/pages/NotFoundPage';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import ProtectedRoute from './components/ProtectedRoute';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import HomePage from './pages/HomePage';
+import ProductsPage from './pages/ProductsPage';
+import ProductDetailsPage from './pages/ProductDetailsPage';
+import CartPage from './pages/CartPage';
+import PlaceOrderPage from './pages/PlaceOrderPage';
+import OrdersPage from './pages/OrdersPage';
+import CardsPage from './pages/CardsPage';
+import ProfilePage from './pages/ProfilePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   return (

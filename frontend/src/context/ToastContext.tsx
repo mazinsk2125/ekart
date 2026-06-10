@@ -19,7 +19,6 @@ interface ToastContextValue {
   notify: (message: string, variant?: ToastVariant) => void;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 const ToastContext = createContext<ToastContextValue | undefined>(undefined);
 
 let toastId = 0;
@@ -73,7 +72,6 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export function useToast(): ToastContextValue {
   const ctx = useContext(ToastContext);
   if (!ctx) {

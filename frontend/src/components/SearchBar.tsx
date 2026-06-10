@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import type { Product } from '@/types';
+import type { Product } from '../types';
 
 interface SearchBarProps {
   products: Product[];

@@ -9,12 +9,21 @@ spring:
   application:
     name: api-gateway
   cloud:
+    consul:
+      host: <CONSUL_HOST>               # e.g. localhost
+      port: 8500                        # Consul HTTP API port
+      discovery:
+        register: true
+        prefer-ip-address: true
+        service-name: ${spring.application.name}
+        health-check-path: /actuator/health
+        health-check-interval: 10s
     gateway:
       globalcors:
         cors-configurations:
           '[/**]':
             allowedOrigins:
-              - "http://localhost:5173"   # Frontend dev origin (Vite)
+              - "http://localhost:3000"   # Frontend dev origin (CRA)
             allowedMethods: [GET, POST, PUT, DELETE, OPTIONS, PATCH]
             allowedHeaders: "*"
             allowCredentials: true
@@ -34,8 +43,3 @@ spring:
         - id: payment-service
           uri: lb://payment-service
           predicates: [ "Path=/payment-api/**" ]
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/   # Eureka registry URL

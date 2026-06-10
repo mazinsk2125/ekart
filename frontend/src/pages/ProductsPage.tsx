@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
-import { productApi } from '@/api/productApi';
-import ProductCard from '@/components/ProductCard';
-import SearchBar from '@/components/SearchBar';
-import Loader from '@/components/Loader';
-import EmptyState from '@/components/EmptyState';
-import { useDebounce } from '@/hooks/useDebounce';
-import type { Product } from '@/types';
+import { productApi } from '../api/productApi';
+import ProductCard from '../components/ProductCard';
+import SearchBar from '../components/SearchBar';
+import Loader from '../components/Loader';
+import EmptyState from '../components/EmptyState';
+import { useDebounce } from '../hooks/useDebounce';
+import type { Product } from '../types';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);

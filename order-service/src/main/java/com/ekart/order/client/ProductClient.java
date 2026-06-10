@@ -2,19 +2,37 @@ package com.ekart.order.client;
 
 import com.ekart.order.dto.ProductDto;
 import com.ekart.order.dto.StockUpdateRequest;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
-@FeignClient(name = "product-service")
-public interface ProductClient {
+/**
+ * Reactive, load-balanced client to Product Service (WebClient + Mono).
+ * Target instances are resolved through Consul via the {@code lb://} scheme.
+ */
+@Component
+public class ProductClient {
 
-    @GetMapping("/product-api/product/{productId}")
-    ProductDto getProduct(@PathVariable("productId") Integer productId);
+    private static final String PRODUCT_SERVICE_URI = "lb://product-service";
 
-    @PutMapping("/product-api/product/{productId}/reduce-stock")
-    ProductDto reduceStock(@PathVariable("productId") Integer productId,
-                           @RequestBody StockUpdateRequest request);
+    private final WebClient webClient;
+
+    public ProductClient(WebClient.Builder loadBalancedWebClientBuilder) {
+        this.webClient = loadBalancedWebClientBuilder.baseUrl(PRODUCT_SERVICE_URI).build();
+    }
+
+    public Mono<ProductDto> getProduct(Integer productId) {
+        return webClient.get()
+            .uri("/product-api/product/{productId}", productId)
+            .retrieve()
+            .bodyToMono(ProductDto.class);
+    }
+
+    public Mono<ProductDto> reduceStock(Integer productId, StockUpdateRequest request) {
+        return webClient.put()
+            .uri("/product-api/product/{productId}/reduce-stock", productId)
+            .bodyValue(request)
+            .retrieve()
+            .bodyToMono(ProductDto.class);
+    }
 }

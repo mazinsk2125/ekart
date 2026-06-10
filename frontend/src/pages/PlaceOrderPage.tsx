@@ -1,15 +1,15 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { cartApi } from '@/api/cartApi';
-import { paymentApi } from '@/api/paymentApi';
-import { orderApi } from '@/api/orderApi';
-import { useAuth } from '@/hooks/useAuth';
-import { useCart } from '@/hooks/useCart';
-import { useToast } from '@/context/ToastContext';
-import Loader from '@/components/Loader';
-import EmptyState from '@/components/EmptyState';
-import { formatPrice } from '@/components/ProductCard';
-import type { Card, CardType, CartProduct } from '@/types';
+import { cartApi } from '../api/cartApi';
+import { paymentApi } from '../api/paymentApi';
+import { orderApi } from '../api/orderApi';
+import { useAuth } from '../hooks/useAuth';
+import { useCart } from '../hooks/useCart';
+import { useToast } from '../context/ToastContext';
+import Loader from '../components/Loader';
+import EmptyState from '../components/EmptyState';
+import { formatPrice } from '../components/ProductCard';
+import type { Card, CardType, CartProduct } from '../types';
 
 type Step = 'review' | 'confirm' | 'pay' | 'done';
 

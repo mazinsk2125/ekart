@@ -1,5 +1,5 @@
 import apiClient from './client';
-import type { Order, PlaceOrderRequest } from '@/types';
+import type { Order, PlaceOrderRequest } from '../types';
 
 export const orderApi = {
   placeOrder(payload: PlaceOrderRequest): Promise<string> {

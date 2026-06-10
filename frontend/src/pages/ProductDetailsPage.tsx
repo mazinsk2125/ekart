@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { productApi } from '@/api/productApi';
-import { cartApi } from '@/api/cartApi';
-import { useAuth } from '@/hooks/useAuth';
-import { useCart } from '@/hooks/useCart';
-import { useToast } from '@/context/ToastContext';
-import Loader from '@/components/Loader';
-import { formatPrice } from '@/components/ProductCard';
-import type { Product } from '@/types';
+import { productApi } from '../api/productApi';
+import { cartApi } from '../api/cartApi';
+import { useAuth } from '../hooks/useAuth';
+import { useCart } from '../hooks/useCart';
+import { useToast } from '../context/ToastContext';
+import Loader from '../components/Loader';
+import { formatPrice } from '../components/ProductCard';
+import type { Product } from '../types';
 
 const FALLBACK_IMG =
   'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450"><rect width="100%" height="100%" fill="%23eef1f6"/><text x="50%" y="50%" font-family="sans-serif" font-size="22" fill="%2394a3b8" text-anchor="middle" dominant-baseline="middle">No image</text></svg>';

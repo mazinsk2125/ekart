@@ -1,10 +1,10 @@
 import { useEffect, useState, type FormEvent } from 'react';
-import { paymentApi } from '@/api/paymentApi';
-import { useAuth } from '@/hooks/useAuth';
-import { useToast } from '@/context/ToastContext';
-import Loader from '@/components/Loader';
-import EmptyState from '@/components/EmptyState';
-import type { AddCardRequest, Card, CardType } from '@/types';
+import { paymentApi } from '../api/paymentApi';
+import { useAuth } from '../hooks/useAuth';
+import { useToast } from '../context/ToastContext';
+import Loader from '../components/Loader';
+import EmptyState from '../components/EmptyState';
+import type { AddCardRequest, Card, CardType } from '../types';
 
 type FormErrors = Partial<Record<keyof AddCardRequest, string>>;
 

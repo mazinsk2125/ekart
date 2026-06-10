@@ -1,0 +1,12 @@
+com\ekart\product\utility\LoggingAspect.class
+com\ekart\product\dto\StockUpdateRequest.class
+com\ekart\product\entity\Product.class
+com\ekart\product\service\ProductService.class
+com\ekart\product\dto\ProductDto.class
+com\ekart\product\exception\EkartException.class
+com\ekart\product\ProductServiceApplication.class
+com\ekart\product\utility\ErrorInfo.class
+com\ekart\product\controller\ProductController.class
+com\ekart\product\utility\ExceptionControllerAdvice.class
+com\ekart\product\repository\ProductRepository.class
+com\ekart\product\service\ProductServiceImpl.class

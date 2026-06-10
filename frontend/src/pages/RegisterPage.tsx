@@ -1,8 +1,8 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '@/hooks/useAuth';
-import { useToast } from '@/context/ToastContext';
-import type { RegisterRequest } from '@/types';
+import { useAuth } from '../hooks/useAuth';
+import { useToast } from '../context/ToastContext';
+import type { RegisterRequest } from '../types';
 
 type FormErrors = Partial<Record<keyof RegisterRequest, string>>;
 

@@ -1,5 +1,5 @@
 import apiClient from './client';
-import type { LoginRequest, LoginResponse, RegisterRequest, Customer } from '@/types';
+import type { LoginRequest, LoginResponse, RegisterRequest, Customer } from '../types';
 
 export const authApi = {
   login(payload: LoginRequest): Promise<LoginResponse> {

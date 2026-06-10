@@ -6,9 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * EKart API Gateway (Spring Cloud Gateway).
  * Single entry point for the React frontend. Routes requests to the
- * appropriate microservice discovered through Eureka.
+ * appropriate microservice discovered through Consul.
  */
 @SpringBootApplication
+@org.springframework.cloud.client.discovery.EnableDiscoveryClient
 public class ApiGatewayApplication {
 
     public static void main(String[] args) {

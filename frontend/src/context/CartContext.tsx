@@ -6,8 +6,8 @@ import {
   useReducer,
   type ReactNode,
 } from 'react';
-import { cartApi } from '@/api/cartApi';
-import type { CartProduct } from '@/types';
+import { cartApi } from '../api/cartApi';
+import type { CartProduct } from '../types';
 import { AuthContext } from './AuthContext';
 
 // ---------------------------------------------------------------------
@@ -43,7 +43,6 @@ export interface CartContextValue {
   clearLocal: () => void;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const CartContext = createContext<CartContextValue | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {

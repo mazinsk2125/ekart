@@ -5,9 +5,9 @@ import {
   useReducer,
   type ReactNode,
 } from 'react';
-import { TOKEN_KEY, USER_KEY } from '@/api/client';
-import { authApi } from '@/api/authApi';
-import type { AuthUser, LoginRequest, RegisterRequest } from '@/types';
+import { TOKEN_KEY, USER_KEY } from '../api/client';
+import { authApi } from '../api/authApi';
+import type { AuthUser, LoginRequest, RegisterRequest } from '../types';
 
 // ---------------------------------------------------------------------
 // State + reducer
@@ -76,7 +76,6 @@ export interface AuthContextValue {
   setUser: (user: AuthUser) => void;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {

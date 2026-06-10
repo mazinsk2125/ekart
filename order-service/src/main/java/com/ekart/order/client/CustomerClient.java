@@ -1,13 +1,29 @@
 package com.ekart.order.client;
 
 import com.ekart.order.dto.CustomerDto;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
-@FeignClient(name = "customer-service")
-public interface CustomerClient {
+/**
+ * Reactive, load-balanced client to Customer Service (WebClient + Mono).
+ * Target instances are resolved through Consul via the {@code lb://} scheme.
+ */
+@Component
+public class CustomerClient {
 
-    @GetMapping("/customer-api/customer/{emailId}")
-    CustomerDto getCustomer(@PathVariable("emailId") String emailId);
+    private static final String CUSTOMER_SERVICE_URI = "lb://customer-service";
+
+    private final WebClient webClient;
+
+    public CustomerClient(WebClient.Builder loadBalancedWebClientBuilder) {
+        this.webClient = loadBalancedWebClientBuilder.baseUrl(CUSTOMER_SERVICE_URI).build();
+    }
+
+    public Mono<CustomerDto> getCustomer(String emailId) {
+        return webClient.get()
+            .uri("/customer-api/customer/{emailId}", emailId)
+            .retrieve()
+            .bodyToMono(CustomerDto.class);
+    }
 }

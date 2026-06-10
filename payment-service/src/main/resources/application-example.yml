@@ -19,16 +19,13 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://<EUREKA_HOST>:8761/eureka/
-  instance:
-    prefer-ip-address: true
-
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 5000
+  cloud:
+    consul:
+      host: <CONSUL_HOST>             # e.g. localhost
+      port: 8500
+      discovery:
+        register: true
+        prefer-ip-address: true
+        service-name: ${spring.application.name}
+        health-check-path: /actuator/health
+        health-check-interval: 10s

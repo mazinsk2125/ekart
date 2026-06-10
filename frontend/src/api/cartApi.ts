@@ -1,5 +1,5 @@
 import apiClient from './client';
-import type { AddToCartRequest, CartProduct } from '@/types';
+import type { AddToCartRequest, CartProduct } from '../types';
 
 export const cartApi = {
   addToCart(payload: AddToCartRequest): Promise<string> {
